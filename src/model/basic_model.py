@@ -100,7 +100,7 @@ class BasicModel:
             # result = subprocess.check_output(command, creationflags=subprocess.CREATE_NEW_CONSOLE)
             loguru.logger.info(f"打包结束: {result}")
             if result.returncode != 0:
-                raise Exception("打包失败")
+                raise Exception(f"打包失败, 返回码: {result.returncode}, 输出: {result.stdout}，错误: {result.stderr}")
             return True
         except Exception as e:
             loguru.logger.error(e)

@@ -131,6 +131,7 @@ class CommandManager(Generic[CommandBaseType]):
                 is_keep_unsupported_command: bool = cfg.get(cfg.keep_unsupported_command)
                 if is_keep_unsupported_command:
                     self._extra_command_list.append(each)
+                    self._extra_command_list = list(set(self._extra_command_list))
                 continue
             loguru.logger.debug(f"command_name: {command_name}, command_value: {command_value}")
             command.parse(command_value)
